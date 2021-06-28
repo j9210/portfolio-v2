@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+Header {
+  background-color: aquamarine;
+}
+
+main {
+  background-color: black;
+}

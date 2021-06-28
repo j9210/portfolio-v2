@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import About from './components/About';
+import Contact from './components/Contact';
+import Project from './components/Project';
+import Portfolio from './components/Portfolio';
+import Resume from './components/Resume';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
+  const [currentNavLink, setCurrentNavLink] = useState("about");
+
+  const renderLink = () => {
+    switch (currentNavLink) {
+      case "about":
+          return <About />;
+      case "portfolio":
+        return <Portfolio />;
+      case "contact":
+        return <Contact />;
+      case "resume":
+        return <Resume />
+      default: 
+        return null;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="mobile-header">
+        <Header currentNavLink={currentNavLink} setCurrentNavLink={setCurrentNavLink}></Header>
+      </div>
+      <div>
+        <main>{renderLink()}</main>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }
